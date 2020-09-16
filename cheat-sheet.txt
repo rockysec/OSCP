@@ -385,3 +385,7 @@ Insecure Registry Permissions
 Autologon User Credential
 User Account Control (UAC) Bypass
 Insecure Named Pipes Permissions
+
+
+https://cheatsheet.haax.fr/linux-systems/privilege-escalation/crontab/#writable-cron-directory
+https://blog.gdssecurity.com/labs/2018/7/11/cups-local-privilege-escalation-and-sandbox-escapes.html
