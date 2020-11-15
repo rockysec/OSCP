@@ -1,6 +1,7 @@
 ## NMAP ##
 nmap -p- --open -T5 -n -v X.X.X.X -oG nmap_full
-nmap -sC -sV -p21,22,80,443,8080 X.X.X.X -oG nmap_detailled
+nmap -sC -sV -p21,22,80,443,8080 X.X.X.X -oN nmap_detailled
+nmap --script http-enum -p80 X.X.X.X -oN ScanWeb
 
 ##UPGRADE SHELL##
 echo "import pty; pty.spawn('/bin/bash')" > /tmp/asdf.py
