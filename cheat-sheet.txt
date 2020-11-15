@@ -1,3 +1,6 @@
+## NMAP ##
+nmap -p- --open -T5 -n -v X.X.X.X -oG nmap_full
+nmap -sC -sV -p21,22,80,443,8080 X.X.X.X -oG nmap_detailled
 
 ##UPGRADE SHELL##
 echo "import pty; pty.spawn('/bin/bash')" > /tmp/asdf.py
