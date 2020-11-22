@@ -37,6 +37,7 @@ stty rows 44 colums 187
 
 ##TIPS##
 dos2unix --> comando para compatibilidad de bash script en diferentes OS
+Cuando hay un valor dentrod e doble comilla en bash, colocar luego todo dentro de triple comilla
 
 ##s4vitar commands##
 find \-name user.txt 2>/dev/null --> muestra ubicacion de archivo user.txt
