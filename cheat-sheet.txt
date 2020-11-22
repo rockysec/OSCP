@@ -37,7 +37,6 @@ stty -a --> correr localmente para ver proporciones de ventana
 stty rows 44 colums 187
 
 ##TIPS##
-mount -t cifs //X.X.X.X/remotefolder /mnt/mountfolder
 dos2unix --> comando para compatibilidad de bash script en diferentes OS
 Cuando hay un valor dentrod e doble comilla en bash, colocar luego todo dentro de triple comilla
 chmod 4755 /bin/bash --> otorga permisos temporales de root a /bin/bash
@@ -62,6 +61,7 @@ smbmap -H X.X.X.X --> Scanea directorios y permisos
 smbclient //X.X.X.X/tmp
 smbclient //X.X.X.X/tmp --option='client min protocol=NT1'--> Fix problemas de incompatibilidad de version en cliente
 smbclient //X.X.X.X/tmp -N --> parametro -N conecta como anonymous
+mount -t cifs //X.X.X.X/remotefolder /mnt/mountfolder -o username=null, password=null,domain=WORKGROUP,rw. --> montar carpeta localmente
 
 
 ##Powershell download HTTP##
