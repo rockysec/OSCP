@@ -38,6 +38,7 @@ stty -a --> correr localmente para ver proporciones de ventana
 stty rows 44 colums 187
 
 ##TIPS##
+wesng tool --> para recon windows manual basada en systeminfo
 dos2unix --> comando para compatibilidad de bash script en diferentes OS
 Cuando hay un valor dentrod e doble comilla en bash, colocar luego todo dentro de triple comilla
 chmod 4755 /bin/bash --> otorga permisos temporales de root a /bin/bash
