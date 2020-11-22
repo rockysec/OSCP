@@ -37,8 +37,10 @@ stty -a --> correr localmente para ver proporciones de ventana
 stty rows 44 colums 187
 
 ##TIPS##
+mount -t cifs //X.X.X.X/remotefolder /mnt/mountfolder
 dos2unix --> comando para compatibilidad de bash script en diferentes OS
 Cuando hay un valor dentrod e doble comilla en bash, colocar luego todo dentro de triple comilla
+chmod 4755 /bin/bash --> otorga permisos temporales de root a /bin/bash
 
 ##s4vitar commands##
 find \-name user.txt 2>/dev/null --> muestra ubicacion de archivo user.txt
