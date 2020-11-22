@@ -35,7 +35,10 @@ export SHELL=bash
 stty -a --> correr localmente para ver proporciones de ventana
 stty rows 44 colums 187
 
-##s4vitar##
+##TIPS##
+dos2unix --> comando para compatibilidad de bash script en diferentes OS
+
+##s4vitar commands##
 find \-name user.txt 2>/dev/null --> muestra ubicacion de archivo user.txt
 find \-type f 2>/dev/null  ##listar archivos con privilegios
 sudo -l  ##listar comandos sudos sin pass
