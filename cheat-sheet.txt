@@ -10,6 +10,7 @@ nmap -p- --open -T5 -n -v X.X.X.X -oN nmap_full
 nmap -p- -sS --min-rate 5000 -vvv -n --open -T5 -Pn X.X.X.X -oN nmap_full --> Mas rapido
 nmap -sC -sV -p21,22,80,443,8080 X.X.X.X -oN nmap_detailled
 nmap --script http-enum -p80 X.X.X.X -oN ScanWeb
+nmap --script http-enum.nse -p80 --script-args http-enum.basepath="dev/" X.X.X.X -oN ScanWebPath
 
 ##WEB FUZZING##
 wfuzz -c --hc=404 -t 500 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt http://x.x.x.x/FUZZ.FUZZ
