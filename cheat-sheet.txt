@@ -44,8 +44,10 @@ Cuando hay un valor dentrod e doble comilla en bash, colocar luego todo dentro d
 find \-name user.txt 2>/dev/null --> muestra ubicacion de archivo user.txt
 find \-type f 2>/dev/null  ##listar archivos con privilegios
 sudo -l  ##listar comandos sudos sin pass
+sudo -u usuario_priv bash--> ejecutar comandos o tener consola con un usuario permitido sin pass usar previo sudo -l
 uid  ## ver privilegios
 find \-perm -4000 2>/dev/null  ##listar archivos con permisos suid
+find \-user user_priv 2>/dev/null --> recursos donde ese usuario sea propietario
 
 ##RECON PRIVESC##
 uname -a --> ver version de kernel
